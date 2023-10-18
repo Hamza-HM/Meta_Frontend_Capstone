@@ -1,0 +1,32 @@
+/* banner.css or App.css */
+
+/* Styles for the container holding the banner content */
+.banner-container {
+    position: relative;
+    background-color: green;
+    margin-top: 80px;
+    padding: 80px 16px;
+    text-align: center;
+  }
+  /* Styles for the heading and description */
+  .banner-content {
+    text-align: left;
+  }
+  /* Styles for the banner image */
+  .banner-image {
+    max-width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  /* Styles for the button */
+  .banner-button {
+    background-color: #F4Ce14;
+    color: #000;
+    &:hover {
+      background-color: #F4Ce14;
+    }
+  }

@@ -1,38 +1,120 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.banner {
+  background-color: rgb(73, 94, 87);
+  color: white;
+  margin-top: 80px;
+  padding: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.banner-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.banner-column {
+  width: 100%; /* Full width by default */
+}
+
+
+
+
+.banner-img {
+  border-radius: 16px;
+
+}
+
+@media (min-width: 768px) {
+  .banner-column {
+    width: 50%; /* 50% width for screens larger than 768px */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (min-width: 1024px) {
+  .banner-column {
+    width: 30%; /* 30% width for screens larger than 1024px */
+  }
+
+  .img-translate {
+    padding-left: 200px;
+    transform: translateY(60px);
+    -webkit-transform: translateY(60px);
+    -moz-transform: translateY(60px);
+    -ms-transform: translateY(60px);
+    -o-transform: translateY(60px);
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+  }
+  .banner-img {
+  
+  }
+  
+}
+
+.banner-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: left;
 }
 
-.App-link {
-  color: #61dafb;
+.banner-heading {
+  font-size: 3rem;
+  margin-bottom: 0rem;
+  color: #c9aa13;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.banner-subheading {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.banner-description {
+  font-size: 16pt;
+  line-height: 1.5;
+  max-width: 65ch;
+  margin-bottom: 1rem;
+  min-width: 30rem;
+}
+
+.banner-highlight {
+  font-size: 16pt;
+}
+
+.banner-leadtext {
+  font-size: 18pt;
+}
+
+.banner-button {
+  background-color: #F4Ce14;
+  color: #000;
+  font-size: 18pt;
+  font-weight: bold;
+  width: 16rem;
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+}
+
+.banner-button:hover {
+  background-color: #F4Ce14;
 }
