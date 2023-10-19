@@ -1,6 +1,6 @@
 const BookedSlotsList = ({ date, bookingInfo }) => {
     const slots = bookingInfo[date]?.booked || [];
-
+  
     return (
       <div>
         <h2>Booked Slots for {date}</h2>
@@ -12,5 +12,7 @@ const BookedSlotsList = ({ date, bookingInfo }) => {
       </div>
     );
   };
-
+  
   export default BookedSlotsList;
+  
+

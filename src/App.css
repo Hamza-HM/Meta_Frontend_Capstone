@@ -52,6 +52,10 @@
   /* color: rgb(73, 94, 87); */
   color: rgb(244, 206, 20);
 }
+#navbar ul li a:hover {
+  /* color: rgb(73, 94, 87); */
+  color: rgb(244, 206, 20);
+}
 
 .booking-list {
   color: rgb(73, 94, 87);
@@ -59,9 +63,7 @@
   font-weight: bold;
 }
 
-/* Change styles when hovering over options */
-/* Change styles when hovering over options */
-/* Change styles for the hover effect on options */
+
 .booking-list option:hover {
   background-color: rgb(73, 94, 87) !important;
   color: white !important;
@@ -72,11 +74,6 @@
   text-align: center;
 }
 
-/* Change styles for the selected option */
-/* .booking-list option:checked {
-  background-color: rgb(73, 94, 87) !important;
-  color: white !important;
-} */
 
 /* Add styles for disabled options */
 .disabled-option {

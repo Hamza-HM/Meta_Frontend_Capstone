@@ -12,11 +12,11 @@ import logoSrc from '../assets/Logo.svg';
 
 const doormatNav = [
   { title: 'Home', path: '/' },
-  { title: 'About', path: '/' },
-  { title: 'Menu', path: '/' },
+  { title: 'About', path: '/about' },
+  { title: 'Menu', path: '/menu' },
   { title: 'Reservations', path: '/reservations' },
-  { title: 'Order Online', path: '/' },
-  { title: 'Login', path: '/' },
+  { title: 'Order Online', path: '/order-online' },
+  { title: 'Login', path: '/login' },
 ];
 
 const contact = [

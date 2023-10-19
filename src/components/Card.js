@@ -28,8 +28,8 @@ const Card = ({ imgSrc, title, price, description }) => {
           </div>
           <p className="card-text mt-5">{description}</p>
         </div>
-        <Link href="#" className="nav-link mt-5 m-3">
-          Order a delivery <FontAwesomeIcon icon={faMotorcycle} />
+        <Link href="#" className="nav-link mt-5 m-3" style={{color:'green'}}>
+          Order a delivery <FontAwesomeIcon className='mx-2 text-black' icon={faMotorcycle} />
         </Link>
       </div>
     );

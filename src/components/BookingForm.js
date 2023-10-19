@@ -32,22 +32,17 @@ const BookingForm = ({ handleDateChangeParent, bookingInfo, dispatch }) => {
   ];
 
   useEffect(() => {
-    // Set the default date to the current day
     const currentDate = new Date().toISOString().split("T")[0];
     formik.setFieldValue("resDate", currentDate);
-    handleDateChange(currentDate); // Call handleDateChange to initialize availableTimesR
+    handleDateChange(currentDate);
   }, []);
 
   const handleDateChange = (selectedDate) => {
-    // Dispatch an action to update the state with the selected date
     dispatch({ type: "INITIALIZE_TIMES", payload: { date: selectedDate, times: availableTimes } });
-    // Set availableTimesR based on your state structure, for example:
     setAvailableTimesR(bookingInfo[selectedDate]?.availableTimes || availableTimes);
-    // Call the handleDateChange function from the parent component
     handleDateChangeParent(selectedDate);
   };
 
-  // Define the validation schema
   const validationSchema = Yup.object().shape({
     resDate: Yup.date().required("Required"),
     resTime: Yup.string().required("Required"),
@@ -58,7 +53,6 @@ const BookingForm = ({ handleDateChangeParent, bookingInfo, dispatch }) => {
     occasion: Yup.string().required("Required"),
   });
 
-  // Use useFormik to handle form state and validation
   const formik = useFormik({
     initialValues: {
       resDate: "",
@@ -68,21 +62,23 @@ const BookingForm = ({ handleDateChangeParent, bookingInfo, dispatch }) => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-        const { resDate, resTime } = values;
-
-        try {
-            console.log('inside submit', bookingInfo)
-          if (bookingInfo[resDate].booked.includes(resTime)) {
-            throw new Error("This time slot is already booked.");
-
-          }
-          // Slot is available, book it
-          dispatch({ type: "BOOK_SLOT", payload: { date: resDate, time: resTime } });
-        } catch (error) {
-          // Handle the error or display a message
-          console.log('erroe',error)
+      const { resDate, resTime } = values;
+      try {
+        if (bookingInfo[resDate].booked.includes(resTime)) {
+          throw new Error("We're sorry this table Slot already taken for this date");
         }
-      },
+        const res = await submit(values);
+        console.log(res); // Log the response returned by submit
+        dispatch({ type: "BOOK_SLOT", payload: { date: resDate, time: resTime } });
+        if (res) {
+          setShowAlert(true);
+          onOpen("success", res.message); // Use 'res' to access the message
+        }
+      } catch (error) {
+        setShowAlert(true);
+        onOpen("error", error.message);
+      }
+    },
   });
 
   return (
@@ -90,7 +86,7 @@ const BookingForm = ({ handleDateChangeParent, bookingInfo, dispatch }) => {
       <Box w="100%">
         <form onSubmit={formik.handleSubmit} style={{ display: "grid", maxWidth: "200px", gap: "20px" }}>
           <FormControl isInvalid={formik.touched.resDate && formik.errors.resDate}>
-            <FormLabel htmlFor="res-date">Choose date</FormLabel>
+            <FormLabel htmlFor="res-date" aria-label="Select reservation date">Choose date</FormLabel>
             <Input
               type="date"
               id="res-date"
@@ -105,7 +101,7 @@ const BookingForm = ({ handleDateChangeParent, bookingInfo, dispatch }) => {
           </FormControl>
 
           <FormControl isInvalid={formik.touched.resTime && formik.errors.resTime}>
-            <FormLabel htmlFor="res-time">Choose time</FormLabel>
+            <FormLabel htmlFor="res-time" aria-label="Select reservation time">Choose time</FormLabel>
             <Select className="booking-list" id="res-time" name="resTime" value={formik.values.resTime} onChange={formik.handleChange}>
                 {availableTimesR && availableTimesR.map((time) => (
                 <option
@@ -119,10 +115,10 @@ const BookingForm = ({ handleDateChangeParent, bookingInfo, dispatch }) => {
                 ))}
             </Select>
             <FormErrorMessage>{formik.errors.resTime}</FormErrorMessage>
-        </FormControl>
+          </FormControl>
 
           <FormControl isInvalid={formik.touched.guests && formik.errors.guests}>
-            <FormLabel htmlFor="guests">Number of guests</FormLabel>
+            <FormLabel htmlFor="guests" aria-label="Select number of guests">Number of guests</FormLabel>
             <Input
               type="number"
               placeholder="1"
@@ -137,7 +133,7 @@ const BookingForm = ({ handleDateChangeParent, bookingInfo, dispatch }) => {
           </FormControl>
 
           <FormControl isInvalid={formik.touched.occasion && formik.errors.occasion}>
-            <FormLabel htmlFor="occasion">Occasion</FormLabel>
+            <FormLabel htmlFor="occasion" aria-label="Select occasion">Occasion</FormLabel>
             <Select className="booking-list" id="occasion" name="occasion" value={formik.values.occasion} onChange={formik.handleChange}>
               <option value="Birthday">Birthday</option>
               <option value="Anniversary">Anniversary</option>
@@ -145,7 +141,7 @@ const BookingForm = ({ handleDateChangeParent, bookingInfo, dispatch }) => {
             <FormErrorMessage>{formik.errors.occasion}</FormErrorMessage>
           </FormControl>
 
-          <Button isLoading={isLoading} type="submit" colorScheme="yellow" width="full">
+          <Button isLoading={isLoading} type="submit" colorScheme="yellow" width="full" aria-label="Submit reservation">
             Make Your reservation
           </Button>
         </form>
