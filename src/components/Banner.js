@@ -1,26 +1,36 @@
-import { Box, Button, Heading, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import React from 'react';
 import bannerImg from '../assets/restauranfood.jpg';
 
 const lorem = `Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500.`;
 
 const Banner = () => {
   return (
-    <Box className="banner">
-      <HStack className="banner-row">
-        <VStack className="banner-column banner-content">
-          <Heading className="banner-heading" as="h1">Little Lemon</Heading>
-          <Heading className="banner-subheading" as="h3">Chicago</Heading>
-          <Text className="banner-description">{lorem}</Text>
-          <Button className="banner-button">
+      <div className="bg-dark text-white mt-5 p-2">
+        <div className='container px-5 mt-4'>
+      <div className="d-md-flex justify-content-md-center align-items-center flex-wrap">
+        <div className="col-md-6 banner-text">
+          <h1 className="display-4 text-warning">Little Lemon</h1>
+          <h3 className="banner-subheading">Chicago</h3>
+          <p className="line-length">{lorem}</p>
+          <button className="btn btn-warning fw-bold rounded">
             Reserve a Table
-          </Button>
-        </VStack>
-        <Box className="banner-column img-translate">
-          <Image className='banner-img' src={bannerImg} boxSize="400px" objectFit="cover" alt="Restaurant Banner"
+          </button>
+        </div>
+        <div className="col-md-6 text-end">
+          <img
+            className='img-fluid rounded'
+            src={bannerImg} alt="Restaurant Banner"
+            style={
+                {
+                maxHeight: '400px',
+                transform: 'translateY(80px)'
+            }
+    }
           />
-        </Box>
-      </HStack>
-    </Box>
+        </div>
+      </div>
+    </div>
+    </div>
   );
 };
 

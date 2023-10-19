@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HStack, Image, Box } from '@chakra-ui/react';
+import { Center, HStack, Image, Box } from '@chakra-ui/react';
 import logoSrc from '../assets/Logo.svg';
 
 const links = [
@@ -12,29 +12,40 @@ const links = [
   { title: 'Login', path: '/login' },
 ];
 
-
 const Nav = () => {
+  const handleClick = (e) => {
+    e.target.classList.add('active');
+  };
+
   return (
-    <nav>
-      <HStack id='header' width='100%' px={16} py={2} justifyContent='center' alignItems='center'
-      backgroundColor='white'
-      >
-        <Image src={logoSrc} boxSize="80px" mr={40} /> {/* Adjust box size and margin as needed */}
-        <ul
-        style={{listStyle: 'none'}}
+    <nav className="navbar navbar-expand-lg bg-body-tertiary ">
+      <div className="container-fluid">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-      <HStack width='100%' px={16} py={4} justifyContent='center' alignItems='center'>
-        {links.map((link, index) => (
-            <li key={index}>
-              <Link
-              style={{ marginRight: '20px', textDecoration: 'none', color: 'inherit',fontSize: '20px', fontWeight:'bold' }} to={link.path}>
-                {link.title}
-              </Link>
-            </li>
-          ))}
-          </HStack>
-        </ul>
-      </HStack>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse justify-content-center " id="navbarNav">
+          <ul className="navbar-nav">
+        <Link className="navbar-brand" to="/">
+          <Image src={logoSrc} />
+        </Link>
+            {links.map((link, index) => (
+              <li className="nav-item d-flex align-items-center fw-bold" key={index}>
+                <Link className='nav-link' to={link.path} onClick={handleClick} style={{ marginLeft: '10px' }}>
+                  {link.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </nav>
   );
 };

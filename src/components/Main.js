@@ -1,65 +1,50 @@
 import React from 'react';
-import { Box, Button, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { Button, Heading, Text } from '@chakra-ui/react';
 import FullScreenSection from './FullScreenSection';
+import Card from './Card';
+import { Link } from 'react-router-dom';
 
 const Main = () => {
   // Sample data for dishes
   const dishes = [
     {
-      name: 'Dish 1',
-      image: 'dish1.jpg',
-      price: '$10.99',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-    {
-      name: 'Dish 2',
-      image: 'dish2.jpg',
+      name: 'Greek salad',
+      image: require('../assets/greek salad.jpg'),
       price: '$12.99',
-      description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      description: 'The famous Greek salad of crispy lettuce, pepper, olives and our Chicago-style feta cheese, garnished with crunchy garlic and rosemary croutons.',
     },
     {
-      name: 'Dish 3',
-      image: 'dish3.jpg',
-      price: '$9.99',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+      name: 'Bruschetta',
+      image: require('../assets/Mario and Adrian b.jpg'),
+      price: '$5.99',
+      description: 'Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.',
+    },
+    {
+      name: 'Lemon Dessert',
+      image: require('../assets/lemon dessert.jpg'),
+      price: '5.00',
+      description: 'This comes straight from grandma\'s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.',
     },
   ];
 
   return (
-    <FullScreenSection mt={80}>
-    <Box padding={8}>
-      <Flex alignItems="center" justifyContent="space-between">
-        <Heading as="h2" size="lg">
-          This Week's Special
-        </Heading>
-        <Button colorScheme="teal" variant="solid">
-          Order Now
-        </Button>
-      </Flex>
+      <div className='container' style={{ marginTop: '150px' }}>
+        <div className='d-flex flex-wrap mx-5 justify-content-center justify-content-md-between align-items-center'>
+          <h1 style={{minWidth: '150px'}}>This weeks specials!</h1>
+          <button className="btn btn-warning fw-bold rounded">
+            Reserve a Table
+          </button>
+        </div>
+        <div className="row justify-content-center">
+          {dishes.map((dish, index) => (
+            <div className="col-lg-4 col-md-6 col-sm-7 my-5 mx-auto w-auto" key={index}>
+              <Card imgSrc={dish.image} title={dish.name} price={dish.price} description={dish.description} />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
 
-      <Flex justifyContent="space-between" mt={8}>
-        {dishes.map((dish, index) => (
-          <Box key={index} maxWidth="30%" borderWidth="1px" borderRadius="md" p={4}>
-            <Image src={dish.image} alt={dish.name} />
-            <Heading as="h3" size="md" mt={4}>
-              {dish.name}
-            </Heading>
-            <Text color="teal" mt={2}>
-              {dish.price}
-            </Text>
-            <Text mt={2}>{dish.description}</Text>
-          </Box>
-        ))}
-      </Flex>
-
-      <Box mt={8} textAlign="center">
-        <Button colorScheme="teal" variant="solid">
-          Order a Delivery
-        </Button>
-      </Box>
-    </Box>
-    </FullScreenSection>
-  );
-};
 
 export default Main;
