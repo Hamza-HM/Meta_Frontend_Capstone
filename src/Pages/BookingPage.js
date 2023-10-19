@@ -18,7 +18,7 @@ const BookingPage = () => {
           <BookingForm
             bookingInfo={bookingInfo}
             handleDateChangeParent={handleDateChangeParent}
-            dispatch={dispatch} // Pass the dispatch function to the BookingForm component
+            dispatch={dispatch}
           />
         </div>
         <div className="col-md-6 mt-5 d-flex align-items-center">

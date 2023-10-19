@@ -1,8 +1,4 @@
-import { render, screen } from "@testing-library/react";
-import BookingForm from "./components/BookingForm";
-import { AlertProvider } from './context/alertContext';
 import bookingReducer from "./reducers/bookingReducer";
-
 
 test('initializeTimes function returns the correct value', () => {
   const initialState = {};
@@ -28,7 +24,7 @@ test('updateTimes function returns the same value as provided in the state', () 
       },
   };
   const action = {
-      type: "UPDATE_TIMES", // Replace with your actual action type
+      type: "UPDATE_TIMES",
       payload: {
           date: "2023-10-20",
           times: ["17:00", "18:00"],
