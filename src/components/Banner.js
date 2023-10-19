@@ -1,5 +1,6 @@
 import React from 'react';
 import bannerImg from '../assets/restauranfood.jpg';
+import { Link } from 'react-router-dom';
 
 const lorem = `Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500.`;
 
@@ -12,9 +13,9 @@ const Banner = () => {
           <h1 className="display-4 text-warning">Little Lemon</h1>
           <h3 className="banner-subheading">Chicago</h3>
           <p className="line-length">{lorem}</p>
-          <button className="btn btn-warning fw-bold rounded">
+          <Link to='/reservations' className="btn btn-warning fw-bold rounded">
             Reserve a Table
-          </button>
+          </Link>
         </div>
         <div className="col-md-6 text-end">
           <img

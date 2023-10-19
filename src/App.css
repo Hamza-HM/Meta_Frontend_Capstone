@@ -19,3 +19,70 @@
 .between-center {
   justify-content: center;
 }
+
+/* Add this CSS in your stylesheet or within your component */
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 10px;
+}
+
+/* Style for links */
+.footer-list a {
+  text-decoration: none;
+  color: #333; /* Change the color to your preference */
+}
+
+/* Style for links on hover */
+.footer-list a:hover {
+  color: #007bff; /* Change the color to your preference */
+  text-decoration: underline;
+}
+
+.active {
+  color: rgb(73, 94, 87);
+  font-weight: 700;
+}
+
+#navbar .active {
+  /* color: rgb(73, 94, 87); */
+  color: rgb(244, 206, 20);
+}
+
+.booking-list {
+  color: rgb(73, 94, 87);
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Change styles when hovering over options */
+/* Change styles when hovering over options */
+/* Change styles for the hover effect on options */
+.booking-list option:hover {
+  background-color: rgb(73, 94, 87) !important;
+  color: white !important;
+}
+.booking-list option {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Change styles for the selected option */
+/* .booking-list option:checked {
+  background-color: rgb(73, 94, 87) !important;
+  color: white !important;
+} */
+
+/* Add styles for disabled options */
+.disabled-option {
+  color: #999;
+  background-color: #f1f1f1;
+  cursor: not-allowed;
+}
+
+
